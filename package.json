@@ -1,0 +1,35 @@
+{
+  "name": "jarvis",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "JARVIS — an immersive personal AI operating environment.",
+  "packageManager": "pnpm@10.23.0",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter \"./apps/*\" --parallel run dev",
+    "dev:web": "pnpm --filter @jarvis/web run dev",
+    "dev:backend": "pnpm --filter @jarvis/backend run dev",
+    "dev:agent": "pnpm --filter @jarvis/local-agent run dev",
+    "build": "pnpm -r run build",
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "pnpm typecheck && pnpm lint && pnpm build",
+    "preflight": "node scripts/doctor.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.14.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1"
+  }
+}

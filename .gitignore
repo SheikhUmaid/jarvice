@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# builds
+dist/
+*.tsbuildinfo
+.vite/
+
+# environment — never commit secrets
+.env
+.env.*
+!.env.example
+
+# local data (SQLite memory, agent pairing, logs) — milestones 8–9
+data/
+*.sqlite
+*.sqlite-journal
+logs/
+*.log
+
+# editors / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json

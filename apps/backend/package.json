@@ -1,0 +1,25 @@
+{
+  "name": "@jarvis/backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "JARVIS backend — WebSocket hub today; AI orchestration, tools and memory in later milestones.",
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false src/index.ts",
+    "build": "node ../../scripts/build-node.mjs src/index.ts dist/index.js",
+    "start": "node dist/index.js",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@jarvis/schemas": "workspace:*",
+    "@jarvis/shared": "workspace:*",
+    "express": "^5.3.0",
+    "ws": "^8.22.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/ws": "^8.18.2",
+    "tsx": "^4.23.15"
+  }
+}

@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+@import '@jarvis/ui/styles.css';
+
+/* The design-system package lives outside this app; let Tailwind see its class names. */
+@source '../../../packages/ui/src';
+
+@layer base {
+  :root {
+    /* Space reserved by the floating chrome (top bar, nav rail, command deck). */
+    --chrome-top: 3.5rem;
+    --chrome-left: 4.25rem;
+    --chrome-bottom: 5.5rem;
+  }
+  @media (max-width: 767px) {
+    :root {
+      --chrome-top: 3.25rem;
+      --chrome-left: 0rem;
+      --chrome-bottom: 7rem;
+    }
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    overflow: hidden;
+    background: var(--color-void);
+    color: var(--color-holo-100);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 1px solid rgb(25 220 255 / 0.85);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Ambient backdrop shared by every mode. */
+  .app-backdrop {
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 42%, rgb(10 52 84 / 0.55), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 110%, rgb(6 40 70 / 0.45), transparent 70%),
+      linear-gradient(180deg, #02060d 0%, #010307 100%);
+  }
+  .app-vignette {
+    background: radial-gradient(ellipse 85% 75% at 50% 50%, transparent 55%, rgb(0 0 0 / 0.7) 100%);
+  }
+  .app-noise {
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* 2D reactor glyph (header indicator and no-WebGL fallback). */
+  .reactor-glyph-core {
+    width: 34%;
+    height: 34%;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      #fff 0%,
+      rgb(var(--tone) / 0.95) 28%,
+      rgb(var(--tone) / 0.15) 62%,
+      transparent 72%
+    );
+    box-shadow: 0 0 18px rgb(var(--tone) / 0.8);
+    animation: reactor-breathe var(--breathe, 3.2s) ease-in-out infinite;
+  }
+  @keyframes reactor-breathe {
+    0%,
+    100% {
+      transform: scale(0.9);
+      opacity: 0.85;
+    }
+    50% {
+      transform: scale(1.06);
+      opacity: 1;
+    }
+  }
+  :root[data-motion='reduced'] .reactor-glyph-core {
+    animation: none;
+  }
+
+  .text-readout {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}

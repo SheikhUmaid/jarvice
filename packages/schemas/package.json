@@ -1,0 +1,17 @@
+{
+  "name": "@jarvis/schemas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Runtime-validated contracts (zod) between the JARVIS web app, backend and local agent.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@jarvis/shared": "workspace:*",
+    "zod": "^4.6.7"
+  }
+}

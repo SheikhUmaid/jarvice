@@ -1,0 +1,13 @@
+{
+  "name": "@jarvis/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Constants and types shared by every JARVIS app.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

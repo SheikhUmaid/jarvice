@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "backend",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@jarvis/backend", "run", "dev"],
+      "port": 8787
+    },
+    {
+      "name": "agent",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@jarvis/local-agent", "run", "dev"],
+      "port": 8788
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@jarvis/web", "run", "dev"],
+      "port": 5173
+    }
+  ]
+}
